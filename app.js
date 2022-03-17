@@ -5,6 +5,8 @@ const app = express();
 
 app.use(router);
 
+app.use(express.static('public'));
+
 app.listen(2207, () => {
   console.log('App is listening');
 });
