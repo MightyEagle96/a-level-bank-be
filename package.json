@@ -1,0 +1,30 @@
+{
+  "name": "a-level-bank-be",
+  "version": "1.0.0",
+  "description": "A Level Data bank",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MightyEagle96/a-level-bank-be.git"
+  },
+  "author": "The Mighty Eagle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MightyEagle96/a-level-bank-be/issues"
+  },
+  "homepage": "https://github.com/MightyEagle96/a-level-bank-be#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "google-apis": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0"
+  }
+}
