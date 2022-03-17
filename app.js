@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import express from 'express';
 import dotenv from 'dotenv';
 import router from './router.js';
@@ -12,6 +13,8 @@ app.use(express.json({ limit: '50mb' }));
 
 app.use(router);
 
-app.listen(2207, () => {
+const PORT = process.env.PORT || 2207;
+
+app.listen(PORT, () => {
   console.log('App is listening');
 });
