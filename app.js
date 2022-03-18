@@ -5,13 +5,15 @@ import router from './router.js';
 
 import morgan from 'morgan';
 import { ConnectDatabase } from './database.js';
+import cors from 'cors';
+import { originUrl } from './services.js';
 
 ConnectDatabase();
 dotenv.config();
 
 const app = express();
 app.use(express.static('public'));
-
+app.use(cors({ origin: originUrl, credentials: true }));
 app.use(express.json());
 app.use(express.json({ limit: '50mb' }));
 
