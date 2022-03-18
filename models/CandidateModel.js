@@ -11,6 +11,7 @@ const candidateSchema = new Schema({
     ref: 'Institution',
     required: true,
   },
+  result: String,
 });
 
 export default model('Candidate', candidateSchema);

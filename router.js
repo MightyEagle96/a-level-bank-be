@@ -4,6 +4,7 @@ import {
   DeleteInstitution,
   ViewInstitutions,
 } from './controllers/InstitutionController.js';
+import { CreateSubject, GetSubjects } from './controllers/SubjectController.js';
 
 const router = express.Router();
 
@@ -17,6 +18,10 @@ router
   .post('/createInstitution', CreateInstitution)
   .get('/viewInstitutions', ViewInstitutions)
   .delete('/deleteInstitution/:id', DeleteInstitution)
+
+  //subjects
+  .post('/createSubject', CreateSubject)
+  .get('/viewSubjects', GetSubjects)
 
   //non -existent route
   .get('*', (req, res) => {
