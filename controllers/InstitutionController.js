@@ -17,3 +17,8 @@ export const ViewInstitutions = async (req, res) => {
   const institutions = await InstitutionModel.find(req.query);
   res.json({ institutions });
 };
+
+export const DeleteInstitution = async (req, res) => {
+  await InstitutionModel.findByIdAndDelete(req.params.id);
+  res.json({ message: 'Insitution Deleted', title: 'Success' });
+};

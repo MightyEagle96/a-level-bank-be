@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   CreateInstitution,
+  DeleteInstitution,
   ViewInstitutions,
 } from './controllers/InstitutionController.js';
 
@@ -15,6 +16,7 @@ router
   //institutions
   .post('/createInstitution', CreateInstitution)
   .get('/viewInstitutions', ViewInstitutions)
+  .delete('/deleteInstitution/:id', DeleteInstitution)
 
   //non -existent route
   .get('*', (req, res) => {
