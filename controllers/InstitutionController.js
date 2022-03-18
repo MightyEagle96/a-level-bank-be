@@ -5,7 +5,9 @@ export const CreateInstitution = async (req, res) => {
   try {
     await InstitutionModel.create(req.body);
 
-    res.json({ title: 'Success', message: 'Institution Created successfully' });
+    res
+      .status(201)
+      .json({ title: 'Success', message: 'Institution Created successfully' });
   } catch (error) {
     ErrorHandler(error, res);
   }

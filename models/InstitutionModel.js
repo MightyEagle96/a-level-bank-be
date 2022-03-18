@@ -5,6 +5,7 @@ const institutionSchema = new Schema({
   name: {
     type: String,
     unique: [true, 'The name of this institution already exists'],
+    required: true,
   },
 });
 
