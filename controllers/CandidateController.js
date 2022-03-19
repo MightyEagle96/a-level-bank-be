@@ -21,14 +21,16 @@ export const CreateCandidate = async (req, res) => {
     const filePath = `public/images/${newFileName}`;
 
     fs.rename(`public/images/${req.file.filename}`, filePath, async () => {});
-    CreateAndUploadFile(auth, newFileName, filePath, req, candidate, res);
-    // res.status(201).json({ title: 'Success', message: 'Candidate created' });
-
-    fs.unlink(filePath, (err) => {
-      if (err) {
-        throw err;
+    CreateAndUploadFile(auth, newFileName, filePath, req, candidate, res).then(
+      () => {
+        fs.unlink(filePath, (err) => {
+          if (err) {
+            throw err;
+          }
+        });
       }
-    });
+    );
+    // res.status(201).json({ title: 'Success', message: 'Candidate created' });
   } catch (error) {
     console.log(error);
     ErrorHandler(error, res);
