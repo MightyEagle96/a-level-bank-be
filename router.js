@@ -10,6 +10,12 @@ import {
 } from './controllers/InstitutionController.js';
 import { CreateSubject, GetSubjects } from './controllers/SubjectController.js';
 import multer from 'multer';
+import {
+  CreateExamBody,
+  DeleteExamBody,
+  EditExamBody,
+  ViewExamBodies,
+} from './controllers/ExaminationBodyController.js';
 
 const router = express.Router();
 
@@ -33,6 +39,12 @@ router
   //Candidates
   .post('/createCandidate', upload.single('profilePhoto'), CreateCandidate)
   .get('/viewCandidates', ViewCandidates)
+
+  //examination body
+  .post('/createExaminationBody', CreateExamBody)
+  .get('/viewExamBodies', ViewExamBodies)
+  .patch('/editExamBody', EditExamBody)
+  .delete('/deleteExamBody', DeleteExamBody)
   //non -existent route
   .get('*', (req, res) => {
     res.status(404).json({ message: 'Route not found on this server' });
