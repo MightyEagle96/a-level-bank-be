@@ -9,8 +9,11 @@ import {
   ViewInstitutions,
 } from './controllers/InstitutionController.js';
 import { CreateSubject, GetSubjects } from './controllers/SubjectController.js';
+import multer from 'multer';
 
 const router = express.Router();
+
+const upload = multer({ dest: 'public/images' });
 
 router
   .get('/', (req, res) => {
@@ -28,7 +31,7 @@ router
   .get('/viewSubjects', GetSubjects)
 
   //Candidates
-  .post('/createCandidate', CreateCandidate)
+  .post('/createCandidate', upload.single('profilePhoto'), CreateCandidate)
   .get('/viewCandidates', ViewCandidates)
   //non -existent route
   .get('*', (req, res) => {
