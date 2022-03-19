@@ -11,7 +11,19 @@ const candidateSchema = new Schema({
     ref: 'Institution',
     required: true,
   },
-  result: String,
+  imageUrl: String,
+  subject1: {
+    subject: { type: Schema.Types.ObjectId, ref: 'Subject' },
+    grade: String,
+  },
+  subject2: {
+    subject: { type: Schema.Types.ObjectId, ref: 'Subject' },
+    grade: String,
+  },
+  subject3: {
+    subject: { type: Schema.Types.ObjectId, ref: 'Subject' },
+    grade: String,
+  },
 });
 
 export default model('Candidate', candidateSchema);

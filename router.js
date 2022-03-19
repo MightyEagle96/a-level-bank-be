@@ -1,5 +1,9 @@
 import express from 'express';
 import {
+  CreateCandidate,
+  ViewCandidates,
+} from './controllers/CandidateController.js';
+import {
   CreateInstitution,
   DeleteInstitution,
   ViewInstitutions,
@@ -23,6 +27,9 @@ router
   .post('/createSubject', CreateSubject)
   .get('/viewSubjects', GetSubjects)
 
+  //Candidates
+  .post('/createCandidate', CreateCandidate)
+  .get('/viewCandidates', ViewCandidates)
   //non -existent route
   .get('*', (req, res) => {
     res.status(404).json({ message: 'Route not found on this server' });
