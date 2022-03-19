@@ -15,6 +15,7 @@ import {
   DeleteExamBody,
   EditExamBody,
   ViewExamBodies,
+  ViewExamBody,
 } from './controllers/ExaminationBodyController.js';
 
 const router = express.Router();
@@ -43,8 +44,9 @@ router
   //examination body
   .post('/createExaminationBody', CreateExamBody)
   .get('/viewExamBodies', ViewExamBodies)
-  .patch('/editExamBody', EditExamBody)
-  .delete('/deleteExamBody', DeleteExamBody)
+  .get('/viewExamBody/:id', ViewExamBody)
+  .patch('/editExamBody/:id', EditExamBody)
+  .delete('/deleteExamBody/:id', DeleteExamBody)
   //non -existent route
   .get('*', (req, res) => {
     res.status(404).json({ message: 'Route not found on this server' });

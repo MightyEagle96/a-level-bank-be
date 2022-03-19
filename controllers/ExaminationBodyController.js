@@ -15,9 +15,18 @@ export const ViewExamBodies = async (req, res) => {
   res.json({ examBodies });
 };
 
+export const ViewExamBody = async (req, res) => {
+  const examBody = await ExamBodyModel.findById(req.params.id);
+  res.json({ examBody });
+};
+
 export const EditExamBody = async (req, res) => {
-  await ExamBodyModel.findByIdAndUpdate(req.params.id, req.body);
-  res.json({ title: 'Success', message: 'Updated successfully' });
+  try {
+    await ExamBodyModel.findByIdAndUpdate(req.params.id, req.body);
+    res.json({ title: 'Success', message: 'Updated successfully' });
+  } catch (error) {
+    ErrorHandler(error, res);
+  }
 };
 
 export const DeleteExamBody = async (req, res) => {
