@@ -82,6 +82,7 @@ async function CreateAndUploadFile(
 export const ViewCandidates = async (req, res) => {
   const candidates = await CandidateModel.find(req.query).populate([
     'institution',
+    'examinationBody',
     'subject1.subject',
     'subject2.subject',
     'subject3.subject',
