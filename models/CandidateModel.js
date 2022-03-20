@@ -11,6 +11,11 @@ const candidateSchema = new Schema({
     ref: 'Institution',
     required: true,
   },
+  examinationBody: {
+    type: Schema.Types.ObjectId,
+    ref: 'ExaminationBody',
+    required: true,
+  },
   imageUrl: String,
   subject1: {
     subject: { type: Schema.Types.ObjectId, ref: 'Subject' },

@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   CreateCandidate,
+  UploadCandidatePhoto,
   ViewCandidates,
 } from './controllers/CandidateController.js';
 import {
@@ -38,8 +39,13 @@ router
   .get('/viewSubjects', GetSubjects)
 
   //Candidates
-  .post('/createCandidate', upload.single('profilePhoto'), CreateCandidate)
+  .post('/createCandidate', CreateCandidate)
   .get('/viewCandidates', ViewCandidates)
+  .post(
+    '/uploadCandidatePhoto',
+    upload.single('profilePhoto'),
+    UploadCandidatePhoto
+  )
 
   //examination body
   .post('/createExaminationBody', CreateExamBody)

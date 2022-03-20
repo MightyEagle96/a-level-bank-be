@@ -12,29 +12,31 @@ const auth = new google.auth.GoogleAuth({
 });
 export const CreateCandidate = async (req, res) => {
   try {
-    const candidate = await CandidateModel.create(req.body);
+    await CandidateModel.create(req.body);
 
-    const newFileName = `${candidate._id}_${Date.now()}.${
-      req.file.mimetype.split('/')[1]
-    }`;
-
-    const filePath = `public/images/${newFileName}`;
-
-    fs.rename(`public/images/${req.file.filename}`, filePath, async () => {});
-    CreateAndUploadFile(auth, newFileName, filePath, req, candidate, res).then(
-      () => {
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            throw err;
-          }
-        });
-      }
-    );
-    // res.status(201).json({ title: 'Success', message: 'Candidate created' });
+    res.status(201).json({ title: 'Success', message: 'Candidate created' });
   } catch (error) {
     console.log(error);
     ErrorHandler(error, res);
   }
+};
+
+export const UploadCandidatePhoto = async (req, res) => {
+  const candidate = await CandidateModel.create(req.body);
+  const newFileName = `${candidate._id}_${Date.now()}.${
+    req.file.mimetype.split('/')[1]
+  }`;
+  const filePath = `public/images/${newFileName}`;
+  fs.rename(`public/images/${req.file.filename}`, filePath, async () => {});
+  CreateAndUploadFile(auth, newFileName, filePath, req, candidate, res).then(
+    () => {
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          throw err;
+        }
+      });
+    }
+  );
 };
 
 async function CreateAndUploadFile(
