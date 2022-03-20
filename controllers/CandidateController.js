@@ -90,3 +90,8 @@ export const ViewCandidates = async (req, res) => {
 
   res.json({ candidates });
 };
+
+export const ViewCandidate = async (req, res) => {
+  const candidate = await CandidateModel.findById(req.params.id);
+  res.json({ candidate });
+};

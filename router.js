@@ -2,6 +2,7 @@ import express from 'express';
 import {
   CreateCandidate,
   UploadCandidatePhoto,
+  ViewCandidate,
   ViewCandidates,
 } from './controllers/CandidateController.js';
 import {
@@ -46,6 +47,7 @@ router
     upload.single('profilePhoto'),
     UploadCandidatePhoto
   )
+  .get('/viewCandidate/:id', ViewCandidate)
 
   //examination body
   .post('/createExaminationBody', CreateExamBody)
