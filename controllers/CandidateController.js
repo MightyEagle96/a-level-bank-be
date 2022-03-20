@@ -92,6 +92,12 @@ export const ViewCandidates = async (req, res) => {
 };
 
 export const ViewCandidate = async (req, res) => {
-  const candidate = await CandidateModel.findById(req.params.id);
+  const candidate = await CandidateModel.findById(req.params.id).populate([
+    'institution',
+    'examinationBody',
+    'subject1.subject',
+    'subject2.subject',
+    'subject3.subject',
+  ]);
   res.json({ candidate });
 };
