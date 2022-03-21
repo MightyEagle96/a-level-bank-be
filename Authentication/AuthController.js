@@ -23,15 +23,22 @@ export const Login = async (req, res) => {
     //check if the email exists
     const account = await Account.findOne({ email: req.body.email });
 
-    if (!account) res.status(401).json({ message: 'Email address not found' });
+    if (!account)
+      return res.status(401).json({
+        message: 'Email address not found',
+        title: 'Error logging in',
+      });
 
     //check if the password is correct
     if (!(await bcrypt.compare(req.body.password, account.password)))
-      return res.status(401).json({ message: 'Passwords do not match' });
+      return res
+        .status(401)
+        .json({ message: 'Passwords do not match', title: 'Error logging in' });
+    else {
+      const accessToken = createAccessToken({ id: account._id });
 
-    const accessToken = createAccessToken({ id: account._id });
-
-    sendAccessToken(account, req, res, accessToken);
+      sendAccessToken(account, req, res, accessToken);
+    }
   } catch (error) {
     ErrorHandler(error, res);
   }
