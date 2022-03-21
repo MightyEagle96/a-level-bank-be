@@ -8,6 +8,7 @@ import {
 import {
   CreateInstitution,
   DeleteInstitution,
+  UpdateInstitution,
   ViewInstitutions,
 } from './controllers/InstitutionController.js';
 import { CreateSubject, GetSubjects } from './controllers/SubjectController.js';
@@ -34,6 +35,7 @@ router
   .post('/createInstitution', CreateInstitution)
   .get('/viewInstitutions', ViewInstitutions)
   .delete('/deleteInstitution/:id', DeleteInstitution)
+  .patch('/updateInstitution/:id', UpdateInstitution)
 
   //subjects
   .post('/createSubject', CreateSubject)
