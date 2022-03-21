@@ -20,6 +20,7 @@ import {
   ViewExamBodies,
   ViewExamBody,
 } from './controllers/ExaminationBodyController.js';
+import { CreateAccount, Login } from './Authentication/AuthController.js';
 
 const router = express.Router();
 
@@ -31,6 +32,10 @@ router
       message: `Server active. Requested at ${new Date().toDateString()}-${new Date().toTimeString()}`,
     });
   })
+  //create account
+  .post('/createAccount', CreateAccount)
+  .post('/login', Login)
+
   //institutions
   .post('/createInstitution', CreateInstitution)
   .get('/viewInstitutions', ViewInstitutions)
