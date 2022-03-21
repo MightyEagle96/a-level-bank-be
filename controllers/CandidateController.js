@@ -22,7 +22,7 @@ export const CreateCandidate = async (req, res) => {
 };
 
 export const UploadCandidatePhoto = async (req, res) => {
-  const candidate = await CandidateModel.create(req.body);
+  const candidate = await CandidateModel.findById(req.params.id);
   const newFileName = `${candidate._id}_${Date.now()}.${
     req.file.mimetype.split('/')[1]
   }`;
@@ -71,7 +71,7 @@ async function CreateAndUploadFile(
       await CandidateModel.findByIdAndUpdate(candidate._id, {
         imageUrl: `https://drive.google.com/uc?id=${response.data.id}`,
       });
-      res.json({ title: 'Success', message: 'Candidate Created' });
+      res.json({ title: 'Success', message: 'Profile Photo Upated' });
       break;
 
     default:

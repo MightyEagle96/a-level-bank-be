@@ -43,7 +43,7 @@ router
   .post('/createCandidate', CreateCandidate)
   .get('/viewCandidates', ViewCandidates)
   .post(
-    '/uploadCandidatePhoto',
+    '/uploadCandidatePhoto/:id',
     upload.single('profilePhoto'),
     UploadCandidatePhoto
   )
