@@ -21,6 +21,10 @@ import {
   ViewExamBody,
 } from './controllers/ExaminationBodyController.js';
 import { CreateAccount, Login } from './Authentication/AuthController.js';
+import {
+  CreateScratchCards,
+  UseScratchCard,
+} from './controllers/ScratchCardController.js';
 
 const router = express.Router();
 

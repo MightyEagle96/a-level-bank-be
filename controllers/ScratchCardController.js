@@ -6,8 +6,8 @@ import { ErrorHandler } from './ErrorController.js';
 export const CreateScratchCards = async (req, res) => {
   for (let i = 0; i < 50; i++) {
     const splitString = randomUUID().split('-');
-    const pin = `${splitString[1]}-${splitString[2]}-${splitString[3]}`;
-    ScratchCardModel.create({ pin });
+    const pin = `${splitString[1]}${splitString[2]}${splitString[3]}`;
+    await ScratchCardModel.create({ pin });
   }
   res.json({
     title: 'Success',
@@ -27,7 +27,13 @@ export const UseScratchCard = async (req, res) => {
       });
     }
 
-    const candidate = await CandidateModel.findOne({ regNumber });
+    const candidate = await CandidateModel.findOne({ regNumber }).populate([
+      'examinationBody',
+      'institution',
+      'subject1.subject',
+      'subject2.subject',
+      'subject3.subject',
+    ]);
 
     if (!candidate) {
       return res.status(400).json({
