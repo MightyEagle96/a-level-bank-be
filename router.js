@@ -62,6 +62,11 @@ router
   .get('/viewExamBody/:id', ViewExamBody)
   .patch('/editExamBody/:id', EditExamBody)
   .delete('/deleteExamBody/:id', DeleteExamBody)
+
+  //Scratch Card
+  .post('/createPin', CreateScratchCards)
+  .post('/useScratchCard', UseScratchCard)
+
   //non -existent route
   .get('*', (req, res) => {
     res.status(404).json({ message: 'Route not found on this server' });
