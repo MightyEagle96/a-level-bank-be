@@ -15,7 +15,7 @@ export const CreateInstitution = async (req, res) => {
 
 export const ViewInstitutions = async (req, res) => {
   const institutions = await InstitutionModel.find(req.query);
-  res.json({ institutions });
+  res.json({ institutions, length: institutions.length });
 };
 
 export const DeleteInstitution = async (req, res) => {
