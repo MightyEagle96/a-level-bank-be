@@ -24,6 +24,7 @@ import { CreateAccount, Login } from './Authentication/AuthController.js';
 import {
   CreateScratchCards,
   UseScratchCard,
+  ViewScratchCards,
 } from './controllers/ScratchCardController.js';
 
 const router = express.Router();
@@ -70,6 +71,7 @@ router
   //Scratch Card
   .post('/createPin', CreateScratchCards)
   .post('/useScratchCard', UseScratchCard)
+  .get('/viewScratchCards', ViewScratchCards)
 
   //non -existent route
   .get('*', (req, res) => {

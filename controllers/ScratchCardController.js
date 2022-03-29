@@ -4,7 +4,7 @@ import { randomUUID } from 'crypto';
 import { ErrorHandler } from './ErrorController.js';
 
 export const CreateScratchCards = async (req, res) => {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < req.body.amount; i++) {
     const splitString = randomUUID().split('-');
     const pin = `${splitString[1]}${splitString[2]}${splitString[3]}`;
     await ScratchCardModel.create({ pin });
@@ -71,6 +71,15 @@ export const UseScratchCard = async (req, res) => {
       });
       res.json({ candidate });
     }
+  } catch (error) {
+    ErrorHandler(error, res);
+  }
+};
+
+export const ViewScratchCards = async (req, res) => {
+  try {
+    const scratchCards = await ScratchCardModel.find(req.query);
+    res.json({ length: scratchCards.length, scratchCards });
   } catch (error) {
     ErrorHandler(error, res);
   }
