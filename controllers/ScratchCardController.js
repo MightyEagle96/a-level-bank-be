@@ -16,6 +16,7 @@ export const CreateScratchCards = async (req, res) => {
 };
 
 export const UseScratchCard = async (req, res) => {
+  req.body.pin = req.body.pin.toLowerCase();
   try {
     const { pin, regNumber } = req.body;
 
