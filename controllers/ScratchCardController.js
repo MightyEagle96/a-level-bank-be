@@ -83,7 +83,9 @@ export const ViewScratchCards = async (req, res) => {
     req.query = { usedBy: null };
   }
   try {
-    const scratchCards = await ScratchCardModel.find(req.query);
+    const scratchCards = await ScratchCardModel.find(req.query).populate(
+      'usedBy'
+    );
     res.json({ length: scratchCards.length, scratchCards });
   } catch (error) {
     ErrorHandler(error, res);
