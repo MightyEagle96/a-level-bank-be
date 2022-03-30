@@ -77,6 +77,11 @@ export const UseScratchCard = async (req, res) => {
 };
 
 export const ViewScratchCards = async (req, res) => {
+  if (req.query.usedBy === 'notNull') {
+    req.query = { usedBy: { $ne: null } };
+  } else if (req.query.usedBy === 'null') {
+    req.query = { usedBy: null };
+  }
   try {
     const scratchCards = await ScratchCardModel.find(req.query);
     res.json({ length: scratchCards.length, scratchCards });

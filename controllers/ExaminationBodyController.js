@@ -12,7 +12,7 @@ export const CreateExamBody = async (req, res) => {
 
 export const ViewExamBodies = async (req, res) => {
   const examBodies = await ExamBodyModel.find();
-  res.json({ examBodies });
+  res.json({ examBodies, length: examBodies.length });
 };
 
 export const ViewExamBody = async (req, res) => {
