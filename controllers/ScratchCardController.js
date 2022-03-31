@@ -16,6 +16,10 @@ export const CreateScratchCards = async (req, res) => {
 };
 
 export const UseScratchCard = async (req, res) => {
+  if (!req.body.pin || !req.body.regNumber)
+    return res
+      .status(400)
+      .json({ title: 'Error', message: 'Please input pin or reg number' });
   req.body.pin = req.body.pin.toLowerCase();
   try {
     const { pin, regNumber } = req.body;
