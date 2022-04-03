@@ -26,6 +26,7 @@ import {
   UseScratchCard,
   ViewScratchCards,
 } from './controllers/ScratchCardController.js';
+import GetVerifications from './controllers/VerificationController.js';
 
 const router = express.Router();
 
@@ -72,6 +73,9 @@ router
   .post('/createPin', CreateScratchCards)
   .post('/useScratchCard', UseScratchCard)
   .get('/viewScratchCards', ViewScratchCards)
+
+  //Verifications
+  .get('/getVerifications', GetVerifications)
 
   //non -existent route
   .get('*', (req, res) => {
